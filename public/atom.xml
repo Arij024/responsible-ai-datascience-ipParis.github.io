@@ -7,11 +7,177 @@
     
     <language>en</language>
     <copyright>Copyright 2025, Calvin Tran</copyright>
-    <lastBuildDate>Wed, 05 Feb 2025 14:03:13 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 01 Mar 2025 22:29:01 +0100</lastBuildDate>
     <generator>Hugo - gohugo.io</generator>
     <docs>http://cyber.harvard.edu/rss/rss.html</docs>
     <atom:link href="http://localhost:1313//atom.xml" rel="self" type="application/atom+xml"/>
     
+    
+    <item>
+      <title>A Groupe Fairness</title>
+      <link>http://localhost:1313/posts/a-groupe-fairness/</link>
+      <description>&lt;h1 id=&#34;frappé-making-ai-fair-without-retraining&#34;&gt;FRAPPÉ: Making AI Fair Without Retraining&lt;/h1&gt;
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Imagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require &lt;strong&gt;retraining the entire model&lt;/strong&gt;, which can be costly, slow, or even impossible if you don&amp;rsquo;t have access to the training pipeline.&lt;/p&gt;
+&lt;h3 id=&#34;enter-frappé&#34;&gt;Enter FRAPPÉ&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;FRAPPÉ&lt;/strong&gt; (Fairness Framework for Post-Processing Everything) introduces a smarter approach. It &lt;strong&gt;corrects unfairness after training&lt;/strong&gt;, applying fairness fixes directly to the model’s predictions — no need to retrain or even access the model’s internal code. This makes fair AI more accessible to teams working with pre-trained models or limited computational resources.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;why-fairness-in-ai-matters&#34;&gt;Why Fairness in AI Matters&lt;/h2&gt;
+&lt;p&gt;AI models increasingly make decisions that affect people’s lives — from loan applications to hiring decisions and medical diagnoses. If these systems are biased, they can perpetuate systemic discrimination.&lt;/p&gt;
+&lt;p&gt;That’s why &lt;strong&gt;group fairness&lt;/strong&gt; — ensuring that different demographic groups (e.g., based on race, gender, or age) receive equitable treatment — is a core concern in responsible AI development.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traditional-fairness-fixes--why-they-fall-short&#34;&gt;Traditional Fairness Fixes — Why They Fall Short&lt;/h2&gt;
+&lt;p&gt;Fairness methods usually fall into two categories:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;In-Processing&lt;/strong&gt;: Modifies the model’s training process to add fairness constraints.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Post-Processing&lt;/strong&gt;: Adjusts the model’s predictions after training to improve fairness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;In-processing methods are powerful but impractical when you don’t have access to the training pipeline or raw data.&lt;/strong&gt; That’s why post-processing methods like FRAPPÉ are so appealing.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;what-makes-frappé-unique&#34;&gt;What Makes FRAPPÉ Unique?&lt;/h2&gt;
+&lt;p&gt;FRAPPÉ brings several key benefits:&lt;/p&gt;
+&lt;h3 id=&#34;1-works-with-any-model&#34;&gt;1. Works with Any Model&lt;/h3&gt;
+&lt;p&gt;FRAPPÉ is &lt;strong&gt;model-agnostic&lt;/strong&gt; — it works with deep neural networks, decision trees, or even black-box models from AutoML platforms. If your model produces scores or logits, FRAPPÉ can enhance its fairness.&lt;/p&gt;
+&lt;h3 id=&#34;2-supports-different-fairness-definitions&#34;&gt;2. Supports Different Fairness Definitions&lt;/h3&gt;
+&lt;p&gt;FRAPPÉ can enforce different notions of fairness, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Statistical Parity&lt;/strong&gt; (ensuring similar outcomes across groups)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Equal Opportunity&lt;/strong&gt; (ensuring equal true positive rates across groups)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Equalized Odds&lt;/strong&gt; (balancing both true and false positive rates across groups)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;3-no-sensitive-attributes-at-prediction-time&#34;&gt;3. No Sensitive Attributes at Prediction Time&lt;/h3&gt;
+&lt;p&gt;Most fairness approaches rely on knowing demographic attributes (like race or gender) when making predictions. FRAPPÉ doesn’t. It learns how to correct unfairness using &lt;strong&gt;all available features&lt;/strong&gt;, removing the need to collect sensitive data at prediction time.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-frappé-works&#34;&gt;How FRAPPÉ Works&lt;/h2&gt;
+&lt;p&gt;The core idea is to &lt;strong&gt;add a fairness correction layer after the model’s predictions&lt;/strong&gt;. This layer, called &lt;code&gt;TPP(x)&lt;/code&gt;, adjusts each prediction to reduce bias. The corrected prediction looks like:&lt;/p&gt;
+&lt;p&gt;fair_prediction = base_prediction + TPP(x)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;base_prediction&lt;/code&gt;: the original model’s prediction.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TPP(x)&lt;/code&gt;: the fairness correction, based on the input features.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;key-advantages&#34;&gt;Key Advantages&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Modular&lt;/strong&gt;: The fairness correction is independent of the original model.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible&lt;/strong&gt;: You can change the fairness definition (e.g., from statistical parity to equal opportunity) without touching the base model — just retrain the correction layer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;real-world-example&#34;&gt;Real-World Example&lt;/h2&gt;
+&lt;p&gt;Imagine a hiring algorithm that scores applicants based on their resumes. Historical bias means female applicants receive lower scores on average. Traditionally, you’d need to retrain the whole model to correct this.&lt;/p&gt;
+&lt;p&gt;With FRAPPÉ, you leave the original model untouched — you just add a &lt;strong&gt;fairness correction layer&lt;/strong&gt; that adjusts scores to ensure fair treatment across genders. This is faster, cheaper, and works even if you didn’t train the original model.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;visual-summary&#34;&gt;Visual Summary&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;         +----------------------+
+         |  Pre-trained Model   |
+         +----------------------+
+                    |
+                    v
+        +-------------------------+
+        |  Fairness Correction    |
+        |    (FRAPPÉ TPP)         |
+        +-------------------------+
+                    |
+                    v
+        +-------------------------+
+        |   Fair Predictions      |
+        +-------------------------+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-well-does-frappé-work&#34;&gt;How Well Does FRAPPÉ Work?&lt;/h2&gt;
+&lt;h3 id=&#34;as-good-as-in-processing&#34;&gt;As Good as In-Processing&lt;/h3&gt;
+&lt;p&gt;In experiments on datasets like &lt;strong&gt;Adult Income&lt;/strong&gt;, &lt;strong&gt;COMPAS&lt;/strong&gt;, and &lt;strong&gt;HSLS&lt;/strong&gt;, FRAPPÉ achieved &lt;strong&gt;similar fairness-accuracy trade-offs&lt;/strong&gt; as traditional in-processing methods — without the need for retraining.&lt;/p&gt;
+&lt;h3 id=&#34;better-than-other-post-processing-methods&#34;&gt;Better Than Other Post-Processing Methods&lt;/h3&gt;
+&lt;p&gt;Compared to &lt;strong&gt;FairProjection&lt;/strong&gt;, a leading post-processing method, FRAPPÉ consistently achieved &lt;strong&gt;better fairness with lower accuracy loss&lt;/strong&gt; across datasets.&lt;/p&gt;
+&lt;h3 id=&#34;works-even-with-partial-group-labels&#34;&gt;Works Even with Partial Group Labels&lt;/h3&gt;
+&lt;p&gt;Even when only a small portion of the training data includes group labels (e.g., race or gender), FRAPPÉ maintains strong performance — a major advantage over traditional methods, which often overfit when group labels are sparse.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;why-frappé-matters&#34;&gt;Why FRAPPÉ Matters&lt;/h2&gt;
+&lt;h3 id=&#34;efficiency&#34;&gt;Efficiency&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;FRAPPÉ only trains a small &lt;strong&gt;correction layer&lt;/strong&gt;, not the full model.&lt;/li&gt;
+&lt;li&gt;This can &lt;strong&gt;reduce training costs by over 90%&lt;/strong&gt; compared to in-processing methods.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flexibility&#34;&gt;Flexibility&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to change from &lt;strong&gt;equal opportunity&lt;/strong&gt; to &lt;strong&gt;statistical parity&lt;/strong&gt;? No problem — just retrain the correction layer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;privacy-friendly&#34;&gt;Privacy-Friendly&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Because FRAPPÉ works without group labels at prediction time, it avoids the need to store or request sensitive demographic data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;FRAPPÉ offers a practical, flexible, and efficient way to ensure fairness in machine learning systems — even when retraining isn’t an option.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;By &lt;strong&gt;decoupling fairness correction from model training&lt;/strong&gt;, FRAPPÉ makes responsible AI more accessible for real-world applications.&lt;/p&gt;
+&lt;p&gt;Whether you’re a data scientist, a policy maker, or someone interested in ethical AI, FRAPPÉ offers a promising new tool to build fairer technology — faster and with fewer constraints.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Alexandru Țifrea, Preethi Lahoti, Ben Packer, Yoni Halpern, Ahmad Beirami, Flavien Prost. &lt;em&gt;FRAPPÉ: A Group Fairness Framework for Post-Processing Everything&lt;/em&gt;. ICML 2024. &lt;a href=&#34;https://arxiv.org/abs/2312.02592&#34;&gt;arXiv Link&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://responsible-ai-datascience-ipparis.github.io/tutorial/&#34;&gt;Responsible AI Blog Guidelines - Télécom Paris&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;about-the-author&#34;&gt;About the Author&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Arij Hajji&lt;/strong&gt;&lt;br&gt;
+&lt;em&gt;M2 Data Science, Institut Polytechnique de Paris&lt;/em&gt;&lt;br&gt;
+&lt;em&gt;&lt;a href=&#34;mailto:arij.hajji@telecom-paris.fr&#34;&gt;arij.hajji@telecom-paris.fr&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+      <author>Students from M2 Data Science IP Paris</author>
+      <guid>http://localhost:1313/posts/a-groupe-fairness/</guid>
+      <pubDate>Sat, 01 Mar 2025 22:29:01 +0100</pubDate>
+    </item>
+    
+    <item>
+      <title>How to augment my dataset?</title>
+      <link>http://localhost:1313/posts/mixupdatacalibration/</link>
+      <description>&lt;style TYPE=&#34;text/css&#34;&gt;
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
+&lt;/style&gt;
+&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]],
+        displayMath: [[&#39;$$&#39;,&#39;$$&#39;], [&#39;\\[&#39;,&#39;\\]&#39;]],
+        skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;] // removed &#39;code&#39; entry
+    }
+});
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += &#39; has-jax&#39;;
+    }
+});
+&lt;/script&gt;
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_HTML-full&#34;&gt;&lt;/script&gt;
+&lt;h1 id=&#34;authors--tristan-waddington-fabien-lagnieu--dimitri-henrard-iratchet&#34;&gt;Authors : &lt;em&gt;Tristan Waddington, Fabien Lagnieu &amp;amp; Dimitri Henrard-Iratchet&lt;/em&gt;&lt;/h1&gt;
+&lt;h3 id=&#34;paper-comment-on-the-research-paper-tailoring-mixup-to-data-for-calibration-written-by-quentin-bouniot-pavlo-mozharovskyi--florence-dalché-buc-from-ltci-télécom-paris-institut-polytechnique-de-paris-france&#34;&gt;Paper: Comment on the research paper: &lt;a href=&#34;https://arxiv.org/abs/2311.01434&#34;&gt;&lt;strong&gt;Tailoring Mixup to Data for Calibration&lt;/strong&gt;&lt;/a&gt;, written by &lt;em&gt;Quentin Bouniot, Pavlo Mozharovskyi &amp;amp; Florence d’Alché-Buc&lt;/em&gt;, from LTCI, Télécom Paris, Institut Polytechnique de Paris, France&lt;/h3&gt;
+&lt;p&gt;TODO: insert table of contents&lt;/p&gt;
+&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;&lt;img
+  src=&#34;./images/MixUpDataCalibration/AI_introvert.png&#34;
+  alt=&#34;Test image Mkdown&#34;
+  loading=&#34;lazy&#34;
+  decoding=&#34;async&#34;
+  class=&#34;full-width&#34;
+/&gt;
+
+
+Let&amp;rsquo;s do it.&lt;/p&gt;
+&lt;p align=&#34;center&#34;&gt;
+  &lt;img src=&#34;./images/MixUpDataCalibration/AI_introvert.png&#34; alt=&#34;Test image mathematical&#34;&gt;
+&lt;/p&gt;
+&lt;h1 id=&#34;main-part&#34;&gt;Main part&lt;/h1&gt;
+&lt;p&gt;Test LaTeX : $\sigma \left( \frac{1}{2}\right)$&lt;/p&gt;
+&lt;p&gt;$$\mathbb{R}^3 $$&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+</description>
+      <author>Students from M2 Data Science IP Paris</author>
+      <guid>http://localhost:1313/posts/mixupdatacalibration/</guid>
+      <pubDate>Wed, 05 Feb 2025 14:03:13 +0100</pubDate>
+    </item>
     
     <item>
       <title>Axiomatic Explanations for Visual Search, Retrieval and Similarity Learning</title>
@@ -273,7 +439,7 @@ Formally, and to introduce some probabilities, which we will delve into further 
 &lt;p&gt;The proposed algorithms are based on &lt;strong&gt;full decentralization&lt;/strong&gt;, and &lt;strong&gt;newtork differential privacy (DP)&lt;/strong&gt;, two notions that we will explain right below.&lt;/p&gt;
 &lt;br /&gt;
 &lt;h1 id=&#34;section-2&#34;&gt;&lt;h1 style=&#34;font-size: 20px;&#34;&gt;Theoretical Aspects on Differential Privacy&lt;/h1&gt;&lt;/h1&gt;
-&lt;h2 id=&#34;h1-stylefont-size-18pxmathematical-contexth1&#34;&gt;&lt;h1 style=&#34;font-size: 18px;&#34;&gt;Mathematical context&lt;/h1&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;mathematical-context&#34;&gt;&lt;h1 style=&#34;font-size: 18px;&#34;&gt;Mathematical context&lt;/h1&gt;&lt;/h2&gt;
 &lt;p&gt;We must introduce some key mathematical definitions to understand the problem we want to tackle.&lt;/p&gt;
 &lt;h2 id=&#34;users-space&#34;&gt;Users space&lt;/h2&gt;
 &lt;p&gt;We consider a set of $n$ users (e.g. a population responding to a survey), each holding a private dataset that we note $D_u$ (e.g. their answer to the questions of the survey).&lt;/p&gt;
@@ -301,7 +467,7 @@ For two datasets $D$ and $D&amp;rsquo;$ of the same size, we denote by $D \sim_u
 &lt;p&gt;The aim of decentralization in this representation, is to give users the fewer information possible, i.e. only the messages they are involved in, and not the full transcript $A(D)$.&lt;/p&gt;
 &lt;p&gt;We introduce this view of a user $u$: $\mathcal{O}_u(\mathcal{A}(D))=\left(\left(v, m, v^{\prime}\right) \in \mathcal{A}(D): v=u \text { or } v^{\prime}=u\right)$&lt;/p&gt;
 &lt;br /&gt;
-&lt;h2 id=&#34;h1-stylefont-size-18pxdifferential-privacyh1&#34;&gt;&lt;h1 style=&#34;font-size: 18px;&#34;&gt;Differential Privacy&lt;/h1&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;differential-privacy&#34;&gt;&lt;h1 style=&#34;font-size: 18px;&#34;&gt;Differential Privacy&lt;/h1&gt;&lt;/h2&gt;
 &lt;p&gt;We will take a step back on this representation to introduce in a more global way the mathematical notion of Differential Privacy (DP).&lt;/p&gt;
 &lt;p&gt;Let us consider a randomised algorithm $M$. $M$ is said to be &amp;ldquo;$\alpha$-differentially private&amp;rdquo; if, for any event $A$:&lt;/p&gt;
 &lt;p&gt;$$\mathbb{P}[M(D)\in A]\leq e^{\alpha} \cdot \mathbb{P}[M(D&amp;rsquo;)\in A]$$&lt;/p&gt;
@@ -3514,7 +3680,7 @@ MathJax.Hub.Queue(function() {
 &lt;li&gt;Mohammed Jawhar&lt;/li&gt;
 &lt;li&gt;Aymane Rahmoune&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;paper--optimal-transport-based-adversarial-based-patch-to-leverage-large-scale-attack-transferabilityhttpsopenreviewnetforumidnzp10evtkv&#34;&gt;Paper : &lt;a href=&#34;https://openreview.net/forum?id=nZP10evtkV&#34;&gt;Optimal Transport Based Adversarial Based Patch To Leverage Large Scale Attack Transferability&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;paper--optimal-transport-based-adversarial-based-patch-to-leverage-large-scale-attack-transferability&#34;&gt;Paper : &lt;a href=&#34;https://openreview.net/forum?id=nZP10evtkV&#34;&gt;Optimal Transport Based Adversarial Based Patch To Leverage Large Scale Attack Transferability&lt;/a&gt;&lt;/h3&gt;
 &lt;h1 id=&#34;table-of-contents-&#34;&gt;Table of contents :&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#section-0&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
@@ -3668,7 +3834,7 @@ where TV is the total variation loss discouraging high-frequency patterns.&lt;/p
 &lt;/body&gt;
 &lt;/html&gt;
 &lt;h2 id=&#34;section-4&#34;&gt;Experiments&lt;/h2&gt;
-&lt;h3 id=&#34;experimental-setup-a-namesubsection-41a&#34;&gt;Experimental setup &lt;a name=&#34;subsection-41&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;experimental-setup&#34;&gt;Experimental setup &lt;a name=&#34;subsection-41&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;To confirm the theoretical results and assumptions, several experiments were conducted under different conditions and settings. For the sake of simplicity, we will not delve into the exhaustive details of the experimental setup, procedures, and results. In summary:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -3687,9 +3853,9 @@ where TV is the total variation loss discouraging high-frequency patterns.&lt;/p
 &lt;p&gt;&lt;strong&gt;Targeted success rate (tSuc)&lt;/strong&gt; metric was used for evaluating transferability. It consists of the percentage of instances where the network, when presented with an image containing the adversarial patch, incorrectly classifies the image as the attacker&amp;rsquo;s intended target class, out of the total number of attempts.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;results-and-findings--a-namesubsection-42a&#34;&gt;Results and Findings : &lt;a name=&#34;subsection-42&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&#34;results-and-findings-&#34;&gt;Results and Findings : &lt;a name=&#34;subsection-42&#34;&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The experiments are structured into three main categories:&lt;/p&gt;
-&lt;h4 id=&#34;digital-experiments--a-namesubsection-421a&#34;&gt;Digital experiments : &lt;a name=&#34;subsection-421&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;digital-experiments-&#34;&gt;Digital experiments : &lt;a name=&#34;subsection-421&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;h5 id=&#34;simple-configuration-&#34;&gt;Simple configuration :&lt;/h5&gt;
 &lt;p&gt;In this configuration, the patches efficacy was tested in a purely digital environment, using images from the ImageNet-1K dataset, which was used also for training. Patches were first designed to attack one of the source models, then tested on other target models to measure the attacking transferability. The table below summarizes for each APA method, the best transferring attack performance achieved :&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;
@@ -3716,13 +3882,13 @@ where TV is the total variation loss discouraging high-frequency patterns.&lt;/p
 &lt;p align=&#34;center&#34;&gt;
   &lt;img src=&#34;./images/image_optimal_transport_patch/Digital_robustified.png&#34; alt=&#34;Digital robustified&#34;&gt;
 &lt;/p&gt;
-&lt;h4 id=&#34;hybrid-experiments-a-namesubsection-422a&#34;&gt;Hybrid experiments: &lt;a name=&#34;subsection-422&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;hybrid-experiments&#34;&gt;Hybrid experiments: &lt;a name=&#34;subsection-422&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;In order to simulate real-world applications more closely, the hybrid experiments conducted within this section involved printing adversarial patches trained with Swin, placing them in physical environments, capturing the images, and then digitally analyzing the results, for simple, and robustified models.&lt;/p&gt;
 &lt;p&gt;The table below shows the criticality of the $(W_2^2)^{(1)} / (SW_2^2)_{500}^{(1)}$ giving very large tSuc in comparison with the other methods, for all settings:&lt;/p&gt;
 &lt;p align=&#34;center&#34;&gt;
   &lt;img src=&#34;./images/image_optimal_transport_patch/Digital_robustified.png&#34; alt=&#34;Digital robustified&#34;&gt;
 &lt;/p&gt;
-&lt;h4 id=&#34;physical-experiments-a-namesubsection-423a&#34;&gt;Physical experiments: &lt;a name=&#34;subsection-423&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&#34;physical-experiments&#34;&gt;Physical experiments: &lt;a name=&#34;subsection-423&#34;&gt;&lt;/a&gt;&lt;/h4&gt;
 &lt;p&gt;In this last experiments category, we get closer to the real world situations, by recording a video of some ImageNet-1K objects (banana, cup , keyboard) while moving a designed patch in the set. This aims to quantify the severity of each attack, for realistic scenarios (as the example provided above about the autonomous vehicule not detecting the stop sign while driving due to an adversarial patch designed without knowing the AI system at all).&lt;/p&gt;
 &lt;p&gt;All APA methods failed to transfer properly on all architectures except for L2 with a modest tSuc(9.3%) and $(W_2^2)^{(1)} / (SW_2^2)_{500}^{(1)}$ that gave much better results (23.4% and 29.3%)&lt;/p&gt;
 &lt;h2 id=&#34;section-5&#34;&gt;Reproducibility&lt;/h2&gt;

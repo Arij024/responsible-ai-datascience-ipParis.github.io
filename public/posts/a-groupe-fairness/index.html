@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Liste - http://localhost:1313/">
+    <title>A Groupe Fairness | Bloggin on Responsible AI</title>
+    <meta name="description" content="Bloggin on Responsible AI">
+    <meta property="og:url" content="http://localhost:1313/posts/a-groupe-fairness/">
+  <meta property="og:site_name" content="Bloggin on Responsible AI">
+  <meta property="og:title" content="A Groupe Fairness">
+  <meta property="og:description" content="FRAPPÉ: Making AI Fair Without Retraining Introduction Imagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require retraining the entire model, which can be costly, slow, or even impossible if you don’t have access to the training pipeline.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-03-01T22:29:01+01:00">
+    <meta property="article:modified_time" content="2025-03-01T22:29:01+01:00">
+
+    
+  <meta itemprop="name" content="A Groupe Fairness">
+  <meta itemprop="description" content="FRAPPÉ: Making AI Fair Without Retraining Introduction Imagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require retraining the entire model, which can be costly, slow, or even impossible if you don’t have access to the training pipeline.">
+  <meta itemprop="datePublished" content="2025-03-01T22:29:01+01:00">
+  <meta itemprop="dateModified" content="2025-03-01T22:29:01+01:00">
+  <meta itemprop="wordCount" content="849">
+    
+    <link rel="canonical" href="http://localhost:1313/posts/a-groupe-fairness/">
+    <link rel="icon" href="http://localhost:1313//assets/favicon.ico">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link href="https://www.google-analytics.com" rel="preconnect" crossorigin>
+    <link rel="alternate" type="application/atom+xml" title="Bloggin on Responsible AI" href="http://localhost:1313//atom.xml" />
+    <link rel="alternate" type="application/json" title="Bloggin on Responsible AI" href="http://localhost:1313//feed.json" />
+    <link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+    
+    
+    <style>*,:after,:before{box-sizing:border-box;padding:0}body{font:1rem/1.5 '-apple-system',BlinkMacSystemFont,avenir next,avenir,helvetica,helvetica neue,ubuntu,roboto,noto,segoe ui,arial,sans-serif;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:2rem;background:#f5f5f5;color:#000}.skip-link{position:absolute;top:-40px;left:0;background:#eee;z-index:100}.skip-link:focus{top:0}h1,h2,h3,h4,h5,strong,b{font-size:inherit;font-weight:600}header{line-height:2;padding-bottom:1.5rem}.link{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none}.time{font-variant-numeric:tabular-nums;white-space:nowrap}blockquote{border-left:5px solid #eee;padding-left:1rem;margin:0}a,a:visited{color:inherit}a:hover,a.heading-link{text-decoration:none}pre{padding:.5rem;overflow:auto;overflow-x:scroll;overflow-wrap:normal}code,pre{font-family:San Francisco Mono,Monaco,consolas,lucida console,dejavu sans mono,bitstream vera sans mono,monospace;font-size:normal;font-size:small;background:#eee}code{margin:.1rem;border:none}ul{list-style-type:square}ul,ol{padding-left:1.2rem}.list{line-height:2;list-style-type:none;padding-left:0}.list li{padding-bottom:.1rem}.meta{color:#777}.content{max-width:70ch;margin:0 auto}header{line-height:2;display:flex;justify-content:space-between;padding-bottom:1rem}header a{text-decoration:none}header ul{list-style-type:none;padding:0}header li,header a{display:inline}h2.post{padding-top:.5rem}header ul a:first-child{padding-left:1rem}.nav{height:1px;background:#000;content:'';max-width:10%}.list li{display:flex;align-items:baseline}.list li time{flex:initial}.hr-list{margin-top:0;margin-bottom:0;margin-right:.5rem;margin-left:.5rem;height:1px;border:0;border-bottom:1px dotted #ccc;flex:1 0 1rem}.m,hr{border:0;margin:3rem 0}img{max-width:100%;height:auto}.post-date{margin:5% 0}.index-date{color:#9a9a9a}.animate-blink{animation:opacity 1s infinite;opacity:1}@keyframes opacity{0%{opacity:1}50%{opacity:.5}100%{opacity:0}}.tags{display:flex;justify-content:space-between}.tags ul{padding:0;margin:0}.tags li{display:inline}.avatar{height:120px;width:120px;position:relative;margin:-10px 0 0 15px;float:right;border-radius:50%} </style>
+  
+    
+  
+  
+  <script type="application/ld+json">
+  {
+      "@context": "http://schema.org",
+      "@type": "BlogPosting",
+      "articleSection": "posts",
+      "name": "A Groupe Fairness",
+      "headline": "A Groupe Fairness",
+      "alternativeHeadline": "",
+      "description": "\u003ch1 id=\u0022frappé-making-ai-fair-without-retraining\u0022\u003eFRAPPÉ: Making AI Fair Without Retraining\u003c\/h1\u003e\n\u003ch2 id=\u0022introduction\u0022\u003eIntroduction\u003c\/h2\u003e\n\u003cp\u003eImagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require \u003cstrong\u003eretraining the entire model\u003c\/strong\u003e, which can be costly, slow, or even impossible if you don\u0026rsquo;t have access to the training pipeline.\u003c\/p\u003e",
+      "inLanguage": "en-us",
+      "isFamilyFriendly": "true",
+      "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "http:\/\/localhost:1313\/posts\/a-groupe-fairness\/"
+      },
+      "author" : {
+          "@type": "Person",
+          "name": ""
+      },
+      "creator" : {
+          "@type": "Person",
+          "name": ""
+      },
+      "accountablePerson" : {
+          "@type": "Person",
+          "name": ""
+      },
+      "copyrightHolder" : "Bloggin on Responsible AI",
+      "copyrightYear" : "2025",
+      "dateCreated": "2025-03-01T22:29:01.00Z",
+      "datePublished": "2025-03-01T22:29:01.00Z",
+      "dateModified": "2025-03-01T22:29:01.00Z",
+      "publisher":{
+          "@type":"Organization",
+          "name": "Bloggin on Responsible AI",
+          "url": "http://localhost:1313/",
+          "logo": {
+              "@type": "ImageObject",
+              "url": "http:\/\/localhost:1313\/assets\/favicon.ico",
+              "width":"32",
+              "height":"32"
+          }
+      },
+      "image": "http://localhost:1313/assets/favicon.ico",
+      "url" : "http:\/\/localhost:1313\/posts\/a-groupe-fairness\/",
+      "wordCount" : "849",
+      "genre" : [ ],
+      "keywords" : [ ]
+  }
+  </script>
+  
+  
+  </head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to main</a>
+  <main id="main">
+  <div class="content">
+    <header>
+<p style="padding: 0;margin: 0;">
+  <a href="../../">
+    <b>Bloggin on Responsible AI</b>
+    <span class="text-stone-500 animate-blink">▮</span>
+  </a>
+</p>
+<ul style="padding: 0;margin: 0;">
+  
+  
+  <li class="">
+    <a href="../../posts/"><span>Post</span></a>
+    
+  <li class="">
+    <a href="../../tutorial/"><span>Tutorial</span></a>
+    
+  <li class="">
+    <a href="../../about/"><span>About</span></a>
+    
+  <li class="">
+    <a href="../../articles/"><span>Articles</span></a>
+    
+  </li>
+</ul>
+</header>
+<hr class="hr-list" style="padding: 0;margin: 0;">
+    <section>
+      <h2 class="post">A Groupe Fairness</h2>
+      <h1 id="frappé-making-ai-fair-without-retraining">FRAPPÉ: Making AI Fair Without Retraining</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Imagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require <strong>retraining the entire model</strong>, which can be costly, slow, or even impossible if you don&rsquo;t have access to the training pipeline.</p>
+<h3 id="enter-frappé">Enter FRAPPÉ</h3>
+<p><strong>FRAPPÉ</strong> (Fairness Framework for Post-Processing Everything) introduces a smarter approach. It <strong>corrects unfairness after training</strong>, applying fairness fixes directly to the model’s predictions — no need to retrain or even access the model’s internal code. This makes fair AI more accessible to teams working with pre-trained models or limited computational resources.</p>
+<hr>
+<h2 id="why-fairness-in-ai-matters">Why Fairness in AI Matters</h2>
+<p>AI models increasingly make decisions that affect people’s lives — from loan applications to hiring decisions and medical diagnoses. If these systems are biased, they can perpetuate systemic discrimination.</p>
+<p>That’s why <strong>group fairness</strong> — ensuring that different demographic groups (e.g., based on race, gender, or age) receive equitable treatment — is a core concern in responsible AI development.</p>
+<hr>
+<h2 id="traditional-fairness-fixes--why-they-fall-short">Traditional Fairness Fixes — Why They Fall Short</h2>
+<p>Fairness methods usually fall into two categories:</p>
+<ul>
+<li><strong>In-Processing</strong>: Modifies the model’s training process to add fairness constraints.</li>
+<li><strong>Post-Processing</strong>: Adjusts the model’s predictions after training to improve fairness.</li>
+</ul>
+<p><strong>In-processing methods are powerful but impractical when you don’t have access to the training pipeline or raw data.</strong> That’s why post-processing methods like FRAPPÉ are so appealing.</p>
+<hr>
+<h2 id="what-makes-frappé-unique">What Makes FRAPPÉ Unique?</h2>
+<p>FRAPPÉ brings several key benefits:</p>
+<h3 id="1-works-with-any-model">1. Works with Any Model</h3>
+<p>FRAPPÉ is <strong>model-agnostic</strong> — it works with deep neural networks, decision trees, or even black-box models from AutoML platforms. If your model produces scores or logits, FRAPPÉ can enhance its fairness.</p>
+<h3 id="2-supports-different-fairness-definitions">2. Supports Different Fairness Definitions</h3>
+<p>FRAPPÉ can enforce different notions of fairness, including:</p>
+<ul>
+<li><strong>Statistical Parity</strong> (ensuring similar outcomes across groups)</li>
+<li><strong>Equal Opportunity</strong> (ensuring equal true positive rates across groups)</li>
+<li><strong>Equalized Odds</strong> (balancing both true and false positive rates across groups)</li>
+</ul>
+<h3 id="3-no-sensitive-attributes-at-prediction-time">3. No Sensitive Attributes at Prediction Time</h3>
+<p>Most fairness approaches rely on knowing demographic attributes (like race or gender) when making predictions. FRAPPÉ doesn’t. It learns how to correct unfairness using <strong>all available features</strong>, removing the need to collect sensitive data at prediction time.</p>
+<hr>
+<h2 id="how-frappé-works">How FRAPPÉ Works</h2>
+<p>The core idea is to <strong>add a fairness correction layer after the model’s predictions</strong>. This layer, called <code>TPP(x)</code>, adjusts each prediction to reduce bias. The corrected prediction looks like:</p>
+<p>fair_prediction = base_prediction + TPP(x)</p>
+<ul>
+<li><code>base_prediction</code>: the original model’s prediction.</li>
+<li><code>TPP(x)</code>: the fairness correction, based on the input features.</li>
+</ul>
+<h3 id="key-advantages">Key Advantages</h3>
+<ul>
+<li><strong>Modular</strong>: The fairness correction is independent of the original model.</li>
+<li><strong>Flexible</strong>: You can change the fairness definition (e.g., from statistical parity to equal opportunity) without touching the base model — just retrain the correction layer.</li>
+</ul>
+<hr>
+<h2 id="real-world-example">Real-World Example</h2>
+<p>Imagine a hiring algorithm that scores applicants based on their resumes. Historical bias means female applicants receive lower scores on average. Traditionally, you’d need to retrain the whole model to correct this.</p>
+<p>With FRAPPÉ, you leave the original model untouched — you just add a <strong>fairness correction layer</strong> that adjusts scores to ensure fair treatment across genders. This is faster, cheaper, and works even if you didn’t train the original model.</p>
+<hr>
+<h2 id="visual-summary">Visual Summary</h2>
+<pre><code>         +----------------------+
+         |  Pre-trained Model   |
+         +----------------------+
+                    |
+                    v
+        +-------------------------+
+        |  Fairness Correction    |
+        |    (FRAPPÉ TPP)         |
+        +-------------------------+
+                    |
+                    v
+        +-------------------------+
+        |   Fair Predictions      |
+        +-------------------------+
+</code></pre>
+<hr>
+<h2 id="how-well-does-frappé-work">How Well Does FRAPPÉ Work?</h2>
+<h3 id="as-good-as-in-processing">As Good as In-Processing</h3>
+<p>In experiments on datasets like <strong>Adult Income</strong>, <strong>COMPAS</strong>, and <strong>HSLS</strong>, FRAPPÉ achieved <strong>similar fairness-accuracy trade-offs</strong> as traditional in-processing methods — without the need for retraining.</p>
+<h3 id="better-than-other-post-processing-methods">Better Than Other Post-Processing Methods</h3>
+<p>Compared to <strong>FairProjection</strong>, a leading post-processing method, FRAPPÉ consistently achieved <strong>better fairness with lower accuracy loss</strong> across datasets.</p>
+<h3 id="works-even-with-partial-group-labels">Works Even with Partial Group Labels</h3>
+<p>Even when only a small portion of the training data includes group labels (e.g., race or gender), FRAPPÉ maintains strong performance — a major advantage over traditional methods, which often overfit when group labels are sparse.</p>
+<hr>
+<h2 id="why-frappé-matters">Why FRAPPÉ Matters</h2>
+<h3 id="efficiency">Efficiency</h3>
+<ul>
+<li>FRAPPÉ only trains a small <strong>correction layer</strong>, not the full model.</li>
+<li>This can <strong>reduce training costs by over 90%</strong> compared to in-processing methods.</li>
+</ul>
+<h3 id="flexibility">Flexibility</h3>
+<ul>
+<li>Need to change from <strong>equal opportunity</strong> to <strong>statistical parity</strong>? No problem — just retrain the correction layer.</li>
+</ul>
+<h3 id="privacy-friendly">Privacy-Friendly</h3>
+<ul>
+<li>Because FRAPPÉ works without group labels at prediction time, it avoids the need to store or request sensitive demographic data.</li>
+</ul>
+<hr>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p><strong>FRAPPÉ offers a practical, flexible, and efficient way to ensure fairness in machine learning systems — even when retraining isn’t an option.</strong></p>
+<p>By <strong>decoupling fairness correction from model training</strong>, FRAPPÉ makes responsible AI more accessible for real-world applications.</p>
+<p>Whether you’re a data scientist, a policy maker, or someone interested in ethical AI, FRAPPÉ offers a promising new tool to build fairer technology — faster and with fewer constraints.</p>
+<hr>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>Alexandru Țifrea, Preethi Lahoti, Ben Packer, Yoni Halpern, Ahmad Beirami, Flavien Prost. <em>FRAPPÉ: A Group Fairness Framework for Post-Processing Everything</em>. ICML 2024. <a href="https://arxiv.org/abs/2312.02592">arXiv Link</a></p>
+</li>
+<li>
+<p><a href="https://responsible-ai-datascience-ipparis.github.io/tutorial/">Responsible AI Blog Guidelines - Télécom Paris</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="about-the-author">About the Author</h2>
+<p><strong>Arij Hajji</strong><br>
+<em>M2 Data Science, Institut Polytechnique de Paris</em><br>
+<em><a href="mailto:arij.hajji@telecom-paris.fr">arij.hajji@telecom-paris.fr</a></em></p>
+
+      
+      <div class="post-date">
+        <span class="g time">March 1, 2025 </span> &#8729;
+         
+      </div>
+      
+    </section>
+    
+    <div id="comments">
+      <script src="https://utteranc.es/client.js"
+    repo=ZgotmplZ
+    issue-term="pathname"
+    theme=ZgotmplZ
+    crossorigin="anonymous"
+    async>
+</script>
+
+    </div>
+    
+  </div>
+</main>
+</body>
+</html>
