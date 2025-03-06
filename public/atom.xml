@@ -18,98 +18,86 @@
       <link>http://localhost:1313/posts/a-groupe-fairness/</link>
       <description>&lt;h1 id=&#34;frappé-making-ai-fair-without-retraining&#34;&gt;FRAPPÉ: Making AI Fair Without Retraining&lt;/h1&gt;
 &lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;Imagine developing a machine learning model to predict job performance, loan approvals, or student success. The model performs well overall — but when you dig deeper, you realize it treats certain demographic groups unfairly. In traditional machine learning pipelines, fixing this bias would often require &lt;strong&gt;retraining the entire model&lt;/strong&gt;, which can be costly, slow, or even impossible if you don&amp;rsquo;t have access to the training pipeline.&lt;/p&gt;
-&lt;h3 id=&#34;enter-frappé&#34;&gt;Enter FRAPPÉ&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;FRAPPÉ&lt;/strong&gt; (Fairness Framework for Post-Processing Everything) introduces a smarter approach. It &lt;strong&gt;corrects unfairness after training&lt;/strong&gt;, applying fairness fixes directly to the model’s predictions — no need to retrain or even access the model’s internal code. This makes fair AI more accessible to teams working with pre-trained models or limited computational resources.&lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;Fairness in predictive models has become a crucial issue in the rapidly developing field of machine learning. Reducing bias in these systems is crucial to preventing the continuation of social injustices as machine learning algorithms are increasingly used in high-stakes applications including criminal justice, lending, and employment.&lt;br&gt;
+Consider creating a machine learning model to predict student outcomes, loan approvals, or job performance. On the whole, the model performs well, but on closer inspection, you find that it treats several demographic groups unfairly. It is often necessary to retrain the entire model to correct this bias in typical machine learning pipelines, which can be costly, time-consuming, or even impossible if you don&amp;rsquo;t have access to the learning pipeline.&lt;/p&gt;
+&lt;h2 id=&#34;frappé-is-here&#34;&gt;FRAPPÉ is here&lt;/h2&gt;
+&lt;p&gt;FRAPPÉ (Fairness Framework for Post-Processing Everything) offers a revolutionary method and is building the roadmap to the way we think about fairness in machine learning. In this blog, we’ll try to go through the key ideas, contributions, and implications of this innovative work.&lt;/p&gt;
 &lt;h2 id=&#34;why-fairness-in-ai-matters&#34;&gt;Why Fairness in AI Matters&lt;/h2&gt;
-&lt;p&gt;AI models increasingly make decisions that affect people’s lives — from loan applications to hiring decisions and medical diagnoses. If these systems are biased, they can perpetuate systemic discrimination.&lt;/p&gt;
-&lt;p&gt;That’s why &lt;strong&gt;group fairness&lt;/strong&gt; — ensuring that different demographic groups (e.g., based on race, gender, or age) receive equitable treatment — is a core concern in responsible AI development.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;traditional-fairness-fixes--why-they-fall-short&#34;&gt;Traditional Fairness Fixes — Why They Fall Short&lt;/h2&gt;
-&lt;p&gt;Fairness methods usually fall into two categories:&lt;/p&gt;
+&lt;p&gt;(AI) algorithms are increasingly  affecting people&amp;rsquo;s lives, from loan applications to job decisions to medical diagnoses.  If there&amp;rsquo;s a chance that these processes can be compromised by bias, they are likely to promote systemic discrimination.&lt;/p&gt;
+&lt;p&gt;Consequently, one of the key issues in the ethical development of AI is &lt;strong&gt;group fairness&lt;/strong&gt;, i.e. ensuring that different demographic groups (e.g. based on race, gender or age) receive fair treatment.
+Ensuring that algorithms do not disproportionately harm or help certain groups, particularly those identified by sensitive characteristics such as age, gender or race, is the goal of fairness in artificial intelligence.  Achieving fairness, however, is no simple matter.  Each of the thousands of definitions of fairness (such as equal opportunity, statistical parity and equalization of opportunity) involves trade-offs between predictive accuracy and fairness.&lt;/p&gt;
+&lt;p&gt;Traditionally, there are three types of fairness mitigation strategies:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;In-Processing&lt;/strong&gt;: Modifies the model’s training process to add fairness constraints.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Post-Processing&lt;/strong&gt;: Adjusts the model’s predictions after training to improve fairness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pre-processing&lt;/strong&gt;: Removing bias from training data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;In-processing&lt;/strong&gt;: Incorporating fairness constraints or regularizers during training.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Post-processing&lt;/strong&gt;: Adjusting the outputs to achieve fairness.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;In-processing methods are powerful but impractical when you don’t have access to the training pipeline or raw data.&lt;/strong&gt; That’s why post-processing methods like FRAPPÉ are so appealing.&lt;/p&gt;
+&lt;p&gt;On one hand, in-processing are highly effective ,they often require retraining of the entire model, which is known to be computationally expensive and impractical in many real-life situations.  On the other hand, post-processing offers more flexibility, it has been limited to particular contexts and fairness standards.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;what-makes-frappé-unique&#34;&gt;What Makes FRAPPÉ Unique?&lt;/h2&gt;
-&lt;p&gt;FRAPPÉ brings several key benefits:&lt;/p&gt;
+&lt;h2 id=&#34;why-frappé-is-a-game-changer-&#34;&gt;Why FRAPPÉ is a Game-Changer ?&lt;/h2&gt;
 &lt;h3 id=&#34;1-works-with-any-model&#34;&gt;1. Works with Any Model&lt;/h3&gt;
-&lt;p&gt;FRAPPÉ is &lt;strong&gt;model-agnostic&lt;/strong&gt; — it works with deep neural networks, decision trees, or even black-box models from AutoML platforms. If your model produces scores or logits, FRAPPÉ can enhance its fairness.&lt;/p&gt;
-&lt;h3 id=&#34;2-supports-different-fairness-definitions&#34;&gt;2. Supports Different Fairness Definitions&lt;/h3&gt;
-&lt;p&gt;FRAPPÉ can enforce different notions of fairness, including:&lt;/p&gt;
+&lt;p&gt;FRAPPÉ is &lt;strong&gt;model-agnostic&lt;/strong&gt; — meaning thay it can is well functional with deep neural networks, decision trees, or even black-box models . We can put it as the following if your model produces scores or logits, FRAPPÉ can enhance its fairness.&lt;/p&gt;
+&lt;h3 id=&#34;2-broad-applicability&#34;&gt;2. Broad applicability:&lt;/h3&gt;
+&lt;p&gt;FRAPPÉ can be used with any quantitative concept of fairness, unlike previous post-processing techniques which are tailored to particular definitions of fairness (such as statistical parity) or problematic situations (such as binary sensitive attributes).  This makes it possible to take into account parameters incompatible with previous post-processing techniques due to continuous sensitive qualities (e.g. age, income).
+FRAPPÉ can enforce different notions of fairness, including:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Statistical Parity&lt;/strong&gt; (ensuring similar outcomes across groups)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Equal Opportunity&lt;/strong&gt; (ensuring equal true positive rates across groups)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Equalized Odds&lt;/strong&gt; (balancing both true and false positive rates across groups)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3-no-sensitive-attributes-at-prediction-time&#34;&gt;3. No Sensitive Attributes at Prediction Time&lt;/h3&gt;
-&lt;p&gt;Most fairness approaches rely on knowing demographic attributes (like race or gender) when making predictions. FRAPPÉ doesn’t. It learns how to correct unfairness using &lt;strong&gt;all available features&lt;/strong&gt;, removing the need to collect sensitive data at prediction time.&lt;/p&gt;
+&lt;h3 id=&#34;3absence-of-sensitive-attributes-during-inference&#34;&gt;3.Absence of sensitive attributes during inference:&lt;/h3&gt;
+&lt;p&gt;Many post-processing techniques require knowledge of sensitive attributes (such as gender or race) at the time of inference, which is sometimes impractical or morally dubious.  By simulating the post-hoc transformation as a function of all covariates, not just the sensitive characteristic, FRAPPÉ gets around this problem.&lt;/p&gt;
+&lt;h3 id=&#34;4efficient-and-modular&#34;&gt;4.Efficient and modular:&lt;/h3&gt;
+&lt;p&gt;The modular design of FRAPPÉ&amp;rsquo; makes it easier to adapt to different definitions of fairness and speeds up calculations since only the post-hoc module needs to be modified, rather than the entire model.&lt;/p&gt;
+&lt;h3 id=&#34;5handling-partial-group-labels&#34;&gt;5.Handling Partial Group Labels:&lt;/h3&gt;
+&lt;p&gt;In most real-life scenarios, only a small part of the data has sensitive attributes. In this case FRAPPÉ outperforms in-processing methods , as it avoids over-adjusting the fairness regularizer and keeps a good trade-off between fairness and accuracy.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;how-frappé-works&#34;&gt;How FRAPPÉ Works&lt;/h2&gt;
-&lt;p&gt;The core idea is to &lt;strong&gt;add a fairness correction layer after the model’s predictions&lt;/strong&gt;. This layer, called &lt;code&gt;TPP(x)&lt;/code&gt;, adjusts each prediction to reduce bias. The corrected prediction looks like:&lt;/p&gt;
-&lt;p&gt;fair_prediction = base_prediction + TPP(x)&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s how it works:&lt;/p&gt;
+&lt;p&gt;Base model: Predictions are made using a pre-trained model, such as logistic regression, random forest or neural network.&lt;/p&gt;
+&lt;p&gt;Post hoc module: The results of the basic model go through direct additive alternations. Like processing techniques, this module is trained using a fairness regularizer, but during inference, it does not need the access to sensitive attributes or the training pipeline .&lt;/p&gt;
+&lt;p&gt;The concept is  &lt;strong&gt;applying a fairness adjustment layer after model predictions&lt;/strong&gt;.  To decrease bias, this layer, called &lt;code&gt;TPP(x)&lt;/code&gt;, changes each prediction.  The updated prediction is as follows:&lt;/p&gt;
+&lt;p&gt;Base_prediction + TPP(x) = Fair_prediction&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;base_prediction&lt;/code&gt;: the original model’s prediction.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;TPP(x)&lt;/code&gt;: the fairness correction, based on the input features.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;base_prediction&lt;/code&gt; : the prediction of the first model.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;TPP(x)&lt;/code&gt; : the fairness correction based on input characteristics.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;key-advantages&#34;&gt;Key Advantages&lt;/h3&gt;
+&lt;p&gt;The authors of the article use comprehensive trials on a number of datasets, including Adult, COMPAS, HSLS, ENEM and Communities &amp;amp; Crime, to show the effectiveness of FRAPPÉ.  The key findings are as follows:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Modular&lt;/strong&gt;: The fairness correction is independent of the original model.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Flexible&lt;/strong&gt;: You can change the fairness definition (e.g., from statistical parity to equal opportunity) without touching the base model — just retrain the correction layer.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;FRAPPÉ is more computationally efficient than in-house processing techniques, while offering comparable or better fairness-error trade-offs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;It outperforms current post-processing methods such as FairProjection, particularly in the presence of continuous sensitive features or partial group labels.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Due to its modular nature, FRAPPÉ is very useful for real-world applications, and can be quickly adapted to a variety of fairness definitions or trade-offs.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;real-world-example&#34;&gt;Real-World Example&lt;/h2&gt;
-&lt;p&gt;Imagine a hiring algorithm that scores applicants based on their resumes. Historical bias means female applicants receive lower scores on average. Traditionally, you’d need to retrain the whole model to correct this.&lt;/p&gt;
-&lt;p&gt;With FRAPPÉ, you leave the original model untouched — you just add a &lt;strong&gt;fairness correction layer&lt;/strong&gt; that adjusts scores to ensure fair treatment across genders. This is faster, cheaper, and works even if you didn’t train the original model.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;visual-summary&#34;&gt;Visual Summary&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;         +----------------------+
-         |  Pre-trained Model   |
-         +----------------------+
-                    |
-                    v
-        +-------------------------+
-        |  Fairness Correction    |
-        |    (FRAPPÉ TPP)         |
-        +-------------------------+
-                    |
-                    v
-        +-------------------------+
-        |   Fair Predictions      |
-        +-------------------------+
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
+&lt;p&gt;Let&amp;rsquo;s take in mind a hiring algorithm ,it basically scores applicants based on their resumes. An exemple of historical bias means female applicants womm receive lower scores on average. Traditionally, we’d need to retrain the whole model to correct this.&lt;/p&gt;
+&lt;p&gt;Using FRAPPÉ, we can leave the original model untouched — we just add a &lt;strong&gt;fairness correction layer&lt;/strong&gt; that adjusts scores to ensure fair treatment across genders. This is faster, cheaper, and works even if we didn’t train the original model.&lt;/p&gt;
 &lt;h2 id=&#34;how-well-does-frappé-work&#34;&gt;How Well Does FRAPPÉ Work?&lt;/h2&gt;
 &lt;h3 id=&#34;as-good-as-in-processing&#34;&gt;As Good as In-Processing&lt;/h3&gt;
-&lt;p&gt;In experiments on datasets like &lt;strong&gt;Adult Income&lt;/strong&gt;, &lt;strong&gt;COMPAS&lt;/strong&gt;, and &lt;strong&gt;HSLS&lt;/strong&gt;, FRAPPÉ achieved &lt;strong&gt;similar fairness-accuracy trade-offs&lt;/strong&gt; as traditional in-processing methods — without the need for retraining.&lt;/p&gt;
+&lt;p&gt;Experimenting with datasets such as &lt;strong&gt;Adult Income&lt;/strong&gt;, &lt;strong&gt;COMPAS&lt;/strong&gt;, and &lt;strong&gt;HSLS&lt;/strong&gt;, FRAPPÉ scored &lt;strong&gt;similar fairness-accuracy trade-offs&lt;/strong&gt; as traditional in-processing moduls without retraining.&lt;/p&gt;
 &lt;h3 id=&#34;better-than-other-post-processing-methods&#34;&gt;Better Than Other Post-Processing Methods&lt;/h3&gt;
 &lt;p&gt;Compared to &lt;strong&gt;FairProjection&lt;/strong&gt;, a leading post-processing method, FRAPPÉ consistently achieved &lt;strong&gt;better fairness with lower accuracy loss&lt;/strong&gt; across datasets.&lt;/p&gt;
-&lt;h3 id=&#34;works-even-with-partial-group-labels&#34;&gt;Works Even with Partial Group Labels&lt;/h3&gt;
-&lt;p&gt;Even when only a small portion of the training data includes group labels (e.g., race or gender), FRAPPÉ maintains strong performance — a major advantage over traditional methods, which often overfit when group labels are sparse.&lt;/p&gt;
-&lt;hr&gt;
+&lt;h3 id=&#34;even-works-with-partial-group-labels&#34;&gt;Even works with Partial Group Labels&lt;/h3&gt;
+&lt;p&gt;When even only a small percentage of the training data includes group labels (e.g., race or gender), FRAPPÉ keeps a strong performance — a great positive point compared to traditional methods, which often overfit when group labels are sparse.&lt;/p&gt;
 &lt;h2 id=&#34;why-frappé-matters&#34;&gt;Why FRAPPÉ Matters&lt;/h2&gt;
-&lt;h3 id=&#34;efficiency&#34;&gt;Efficiency&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;FRAPPÉ only trains a small &lt;strong&gt;correction layer&lt;/strong&gt;, not the full model.&lt;/li&gt;
-&lt;li&gt;This can &lt;strong&gt;reduce training costs by over 90%&lt;/strong&gt; compared to in-processing methods.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;flexibility&#34;&gt;Flexibility&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Need to change from &lt;strong&gt;equal opportunity&lt;/strong&gt; to &lt;strong&gt;statistical parity&lt;/strong&gt;? No problem — just retrain the correction layer.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;privacy-friendly&#34;&gt;Privacy-Friendly&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Because FRAPPÉ works without group labels at prediction time, it avoids the need to store or request sensitive demographic data.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
+&lt;h3 id=&#34;efficiency&#34;&gt;Efficiency:&lt;/h3&gt;
+&lt;p&gt;FRAPPÉ can &lt;strong&gt;decrease training costs upto 90%&lt;/strong&gt; compared to in-processing approaches, as it only learns a small &lt;strong&gt;layer of correction&lt;/strong&gt; and not the entire model.&lt;/p&gt;
+&lt;h3 id=&#34;flexibility&#34;&gt;Flexibility:&lt;/h3&gt;
+&lt;p&gt;Is &lt;strong&gt;statistical parity&lt;/strong&gt; required instead of &lt;strong&gt;equal opportunity&lt;/strong&gt;?  Just relearn the correction layer to solve the problem.&lt;/p&gt;
+&lt;h3 id=&#34;privacy&#34;&gt;Privacy:&lt;/h3&gt;
+&lt;p&gt;For FRAPPÉ the storage or extraction of sensitive demographic data is not crucial or obigatory, as it works without group labels at the time of prediction.&lt;/p&gt;
 &lt;h2 id=&#34;final-thoughts&#34;&gt;Final Thoughts&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;FRAPPÉ offers a practical, flexible, and efficient way to ensure fairness in machine learning systems — even when retraining isn’t an option.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;By &lt;strong&gt;decoupling fairness correction from model training&lt;/strong&gt;, FRAPPÉ makes responsible AI more accessible for real-world applications.&lt;/p&gt;
-&lt;p&gt;Whether you’re a data scientist, a policy maker, or someone interested in ethical AI, FRAPPÉ offers a promising new tool to build fairer technology — faster and with fewer constraints.&lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;When retraining is not an option, FRAPPÉ provides a useful, adaptable and efficient method for ensuring fairness in machine learning systems.&lt;/p&gt;
+&lt;p&gt;FRAPPÉ can make the usage of responsible AI in practical applications by &lt;strong&gt;separating model learning from fairness correction&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;For those interested in ethical AI, data science or policy-making, FRAPPÉ presents a promising new tool for developing fairer technologies faster and with fewer limitations.&lt;/p&gt;
+&lt;h2 id=&#34;what-do-you-think-about-frappé&#34;&gt;What do you think about FRAPPÉ?&lt;/h2&gt;
+&lt;p&gt;Could this framework be the key to making fairness mitigation more practical and scalable? We are curious for you to share your thoughts !&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -119,10 +107,9 @@
 &lt;p&gt;&lt;a href=&#34;https://responsible-ai-datascience-ipparis.github.io/tutorial/&#34;&gt;Responsible AI Blog Guidelines - Télécom Paris&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;about-the-author&#34;&gt;About the Author&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Arij Hajji&lt;/strong&gt;&lt;br&gt;
-&lt;em&gt;M2 Data Science, Institut Polytechnique de Paris&lt;/em&gt;&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;Arij Hajji&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;M2 Data Science, Institut Polytechnique de Paris&lt;/em&gt;&lt;br&gt;
 &lt;em&gt;&lt;a href=&#34;mailto:arij.hajji@telecom-paris.fr&#34;&gt;arij.hajji@telecom-paris.fr&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 </description>
       <author>Students from M2 Data Science IP Paris</author>
